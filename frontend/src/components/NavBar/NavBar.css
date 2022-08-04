@@ -1,0 +1,20 @@
+.Icon-Container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: auto;
+  margin: auto;
+}
+.Icon {
+  margin: 0px 1px 3px 0px !important;
+}
+.Icon-Container span {
+  margin: 0px 5px 0px 5px;
+  font-size: 22px;
+}
+.Icon-Container:hover {
+  cursor: pointer;
+}
+.Text{
+  margin: 5px 0px 0px 5px ;
+}
