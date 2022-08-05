@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import jwt_decode from "jwt-decode";
 import { BiUser } from "react-icons/bi";
@@ -11,7 +10,6 @@ function NavBar() {
 
   const Logout = (e) => {
     e.preventDefault();
-    console.log("hi");
     window.localStorage.clear();
     window.location.reload();
   };

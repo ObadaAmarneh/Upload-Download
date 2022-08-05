@@ -1,14 +1,13 @@
 import { Button, Upload } from "antd";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import Typical from "react-typical";
 import "antd/dist/antd.css";
 import "./UpLoad.css";
 
 function UpLoad() {
-  const [user, setUser] = useState("");
   const navigate = useNavigate();
   const checkToken = async () => {
     if (!localStorage.getItem("accessToken")) {
@@ -23,7 +22,7 @@ function UpLoad() {
   };
   useEffect(() => {
     checkToken();
-  }, []);
+  });
   return (
     <>
       <div className="upload-page-container">
@@ -46,9 +45,7 @@ function UpLoad() {
           <Row>
             <Upload.Dragger
               multiple={true}
-              action={
-                (`http://localhost:5000/api/file/upload/obada`)
-              }
+              action={`http://localhost:5000/api/file/upload/obada`}
               listType="picture"
               status="done"
             >

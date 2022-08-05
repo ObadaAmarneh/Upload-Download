@@ -21,7 +21,6 @@ const uploadFiles = (req, res) => {
       console.log(err);
     } else {
       var FileName = req.files[0].originalname;
-      console.log(" req.file", req.files);
       const newFile = new filesModel({
         fileName: req.files[0].originalname,
         type: req.files[0].mimetype,
@@ -30,7 +29,6 @@ const uploadFiles = (req, res) => {
       newFile
         .save()
         .then((result) => {
-          console.log(result);
           res.status(201);
         })
         .catch((err) => {
@@ -62,15 +60,10 @@ const getAllFiles = (req, res) => {
 };
 
 const downloadFile = (req, res) => {
-  console.log("req._id", req.params.id);
   id = req.params.id;
   filesModel
     .findById(id)
     .then((file) => {
-      console.log(
-        'path.normalize(__dirname + "/../../public/images/{file.name}"',
-        path.normalize(__dirname + `/../../public/images/${file.fileName}`)
-      );
       res.download(
         path.normalize(__dirname + `/../../public/images/${file.fileName}`),
         `${file.fileName}`

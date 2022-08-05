@@ -31,9 +31,8 @@ function Download() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
   const downloadFile = (name, id) => {
-    console.log("elem._id", id);
     axios
       .get(`http://localhost:5000/api/file/download/${id}`, {
         responseType: "blob",

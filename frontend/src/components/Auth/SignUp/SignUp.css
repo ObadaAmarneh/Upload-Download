@@ -18,6 +18,22 @@
   font-size: 1rem;
 }
 
+.Error_Title {
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: auto;
+  text-align: center;
+}
+
 a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  .Error_Title {
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+  }
 }

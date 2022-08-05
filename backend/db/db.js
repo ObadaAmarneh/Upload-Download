@@ -6,10 +6,10 @@ const options = {
   useUnifiedTopology: true,
 };
 
-DB_URI = process.env.DB_URI
+DB_URI = process.env.DB_URI;
 
 // connecting mongoose
-mongoose.connect('mongodb://localhost:27017/upward', options).then(
+mongoose.connect("mongodb://localhost:27017/upward", options).then(
   () => {
     console.log("DB Ready To Use");
   },

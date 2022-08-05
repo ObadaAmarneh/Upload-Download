@@ -1,48 +1,69 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Col, Row, Form, Button } from "react-bootstrap";
+import { Row, Form, Button } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-
 import "./SignIn.css";
+
 function SingIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const showErrorMessage = (message) => {
+    setErrorMessage(message);
+    setTimeout(() => {
+      setErrorMessage("");
+    }, 2500);
+  };
   const loginCheck = async (e) => {
     e.preventDefault();
-    const data = {
-      email: email,
-      password: password,
-    };
-    console.log("data", data);
-    await axios
-      .post(`http://localhost:5000/api/user/login`, data)
-      .then((res) => {
-        if (res.data.token) {
-          const decoded = jwt_decode(res.data.token);
-          console.log(decoded.email);
-          if (decoded.email == "admin@gmail.com") {
-            navigate("/AdminPage");
+    if (password && email) {
+      const data = {
+        email: email,
+        password: password,
+      };
+      await axios
+        .post(`http://localhost:5000/api/user/login`, data)
+        .then((res) => {
+          if (res.data.success) {
+            const decoded = jwt_decode(res.data.token);
+            if (decoded.email == "admin@gmail.com") {
+              navigate("/AdminPage");
+            } else {
+              navigate("/Home");
+            }
+            window.location.reload();
+            localStorage.setItem("accessToken", res.data.token);
           } else {
-            navigate("/Home");
+            showErrorMessage(res.data.message);
           }
-          window.location.reload();
-          localStorage.setItem("accessToken", res.data.token);
-        } else {
-          setEmail("");
-          setPassword("");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      showErrorMessage("Please make sure all fields are filled in correctly");
+    }
   };
   return (
     <>
       <div className="SignIn-From">
         <Form>
-          <p className="Title"> Sign in </p>
+          {errorMessage ? (
+            <Row>
+              <Alert variant="danger">
+                <p className="Error_Title"> {errorMessage} </p>
+              </Alert>
+            </Row>
+          ) : (
+            ""
+          )}
+          <Row>
+            <p className="Title"> Sign in </p>
+          </Row>
           <Form.Group className="mb-3 " controlId="formBasicEmail">
             <Form.Label className="email Sub_Title">User / Email</Form.Label>
             <Form.Control
@@ -50,7 +71,6 @@ function SingIn() {
               placeholder="Enter email or user"
               onChange={(e) => {
                 setEmail(e.target.value);
-                console.log("setEmail", e.target.value);
               }}
             />
             <Form.Text style={{ fontSize: "0.8rem" }} className="text-muted">
@@ -62,13 +82,11 @@ function SingIn() {
             <Form.Control
               onChange={(e) => {
                 setPassword(e.target.value);
-                console.log("setPassword", e.target.value);
               }}
               type="password"
               placeholder="Enter Password"
             />
           </Form.Group>
-
           <Row>
             <Button
               variant="outline-primary"
@@ -84,9 +102,8 @@ function SingIn() {
           <Row>
             <Form.Text
               style={{
-                fontSize: ".93rem",
-                width: "85%",
-                marginLeft: "30px",
+                fontSize: "0.93rem",
+                textAlign: "center",
                 padding: "5px 15px 2px 0px",
               }}
               className="text-muted"
