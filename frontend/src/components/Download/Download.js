@@ -52,9 +52,12 @@ function Download() {
                         src={`http://localhost:5000/images/${elem.name}`}
                       />
                       <Card.Body>
-                        <Card.Title style={{ textAlign: "center" }}>
-                          {" "}
-                          {elem.name}
+                        <Card.Title>
+                          <span style={{ textAlign: "left" }}>Obada</span>
+                          <span  style={{ textAlign: "center" }} > |  </span>
+                          <span style={{ textAlign: "right" }}>
+                            {elem.name}
+                          </span>
                         </Card.Title>
                         <Card.Text></Card.Text>
                       </Card.Body>

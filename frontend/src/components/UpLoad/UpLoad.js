@@ -11,7 +11,7 @@ import Typical from "react-typical";
 
 import "./UpLoad.css";
 function UpLoad() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState('');
   const navigate = useNavigate();
   const checkToken = async () => {
     if (!localStorage.getItem("accessToken")) {
@@ -31,7 +31,7 @@ function UpLoad() {
           <Row>
             <Typical
               className="text-typical"
-              steps={["Hello", 1000, "Hello world!", 500]}
+              steps={[`Hello `, 1000 , 'Hello In Our Website to Upload Your File ..' , 1500]}
               loop={Infinity}
               wrapper="p"
             />
