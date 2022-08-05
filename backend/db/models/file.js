@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const filesModel = new mongoose.Schema({
-  name: { type: String, required: true },
+  fileName: { type: String, required: true },
+  userName: { type: String, required: true },
+  type: { type: String, required: true },
 });
 
 module.exports = mongoose.model("File", filesModel);

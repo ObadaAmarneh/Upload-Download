@@ -1,0 +1,8 @@
+Hi client,
+How are you, 
+I saw your job details and I have good and long experience in  HTML, CSS, Vue.js, and SQL.
+In Vue.js I know more technical help such as:  Vuex, Vuetify ,  Material Design Icons, and Nuxt.js.
+All technical up I work in it but PostgreSQL and  Hasura I don't work in it but I know what  PostgreSQL object-relational database and Hasura to deploy data API and database on it.
+I can learn  PostgreSQL and Hasura and work in them in just one day case I have Autonomous and Fast learning.
+Best Regards,
+Obada
