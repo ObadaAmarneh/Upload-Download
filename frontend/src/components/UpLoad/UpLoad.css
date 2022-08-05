@@ -1,14 +1,29 @@
+.upload-page-container{
+  width: 100%;
+  overflow: hidden;
+}
 .Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: calc(100vh - 73px);
-  }
-  .Upload-Container {
-    padding: 50px;
-  }
-  .Upload-Text {
-  color: black ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  height: 70vh !important;
+}
+.typical-container {
+  margin-top: 25px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.text-typical {
+  color: #4290dd;
+  font-size: 3rem;
+}
+.Upload-Container {
+  padding: 50px;
+}
+.Upload-Text {
+  color: black;
   font-size: 18px;
-  }
+}
